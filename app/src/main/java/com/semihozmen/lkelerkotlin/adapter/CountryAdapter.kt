@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.semihozmen.lkelerkotlin.databinding.RecRowBinding
 import com.semihozmen.lkelerkotlin.model.CountryModel
+import com.semihozmen.lkelerkotlin.util.downloadFromUrl
+import com.semihozmen.lkelerkotlin.util.placeHolderProgressBar
 import com.semihozmen.lkelerkotlin.view.FeedFragmentDirections
 
 class CountryAdapter(val countryList:ArrayList<CountryModel>) : RecyclerView.Adapter<CountryAdapter.CountryHolder>() {
@@ -33,6 +35,10 @@ class CountryAdapter(val countryList:ArrayList<CountryModel>) : RecyclerView.Ada
             val action = FeedFragmentDirections.actionFeedFragmentToDetailsFragment()
             Navigation.findNavController(it).navigate(action)
         }
+
+        holder.binding.imgCard.downloadFromUrl(countryList.get(position).flag,
+            placeHolderProgressBar(holder.itemView.context)
+        )
 
     }
 

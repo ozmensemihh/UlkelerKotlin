@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.semihozmen.lkelerkotlin.R
 import com.semihozmen.lkelerkotlin.databinding.FragmentDetailsBinding
+import com.semihozmen.lkelerkotlin.util.downloadFromUrl
+import com.semihozmen.lkelerkotlin.util.placeHolderProgressBar
 import com.semihozmen.lkelerkotlin.viewmodel.DetailsViewModel
 
 
@@ -36,6 +38,7 @@ class DetailsFragment : Fragment() {
         arguments?.let {
             countryId = DetailsFragmentArgs.fromBundle(it).countryId
         }
+        detailsViewModel.getDataFromRoom(countryId)
 
         observeLiveDate()
 
@@ -49,6 +52,10 @@ class DetailsFragment : Fragment() {
                  binding.txtDetailCurrency.text = country.currency
                  binding.txtDetailLanguage.text = country.language
                  binding.txtDetailRegion.text = country.region
+                 context?.let {
+                     binding.imdDetails.downloadFromUrl(country.flag, placeHolderProgressBar(it))
+                 }
+
              }
          })
      }

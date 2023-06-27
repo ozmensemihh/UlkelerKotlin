@@ -32,7 +32,7 @@ class CountryAdapter(val countryList:ArrayList<CountryModel>) : RecyclerView.Ada
         holder.binding.txtCardCountryinfo.text = countryList.get(position).region
 
         holder.itemView.setOnClickListener {
-            val action = FeedFragmentDirections.actionFeedFragmentToDetailsFragment()
+            val action = FeedFragmentDirections.actionFeedFragmentToDetailsFragment(countryList.get(position).id)
             Navigation.findNavController(it).navigate(action)
         }
 

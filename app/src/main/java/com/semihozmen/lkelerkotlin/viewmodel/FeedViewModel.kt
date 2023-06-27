@@ -41,10 +41,17 @@ class FeedViewModel(application: Application):BaseViewModel(application) {
     }
 
     private fun getDataFromRoom() {
+
+        countryLoading.value = true
+
         launch {
             val countries = CountryDatabase(getApplication()).countryDao().getAll()
             showCountries(countries)
         }
+    }
+
+    private fun refreshFromAPI(){
+        getDataFromAPI()
     }
 
     private fun getDataFromAPI(){
@@ -91,5 +98,9 @@ class FeedViewModel(application: Application):BaseViewModel(application) {
         sharedPreferences.saveTime(System.nanoTime())
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
 
 }

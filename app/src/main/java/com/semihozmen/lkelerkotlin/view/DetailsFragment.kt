@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
@@ -28,7 +29,7 @@ class DetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        binding = FragmentDetailsBinding.inflate(layoutInflater)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_details,container,false)
         return binding.root
     }
 
@@ -47,6 +48,10 @@ class DetailsFragment : Fragment() {
      private fun observeLiveDate(){
          detailsViewModel.countryLiveData.observe(viewLifecycleOwner, Observer {
              it?.let {country->
+
+                 binding.selectedCountry = country
+
+                 /*
                  binding.txtDetailName.text = country.name
                  binding.txtDetailCapital.text = country.capital
                  binding.txtDetailCurrency.text = country.currency
@@ -55,6 +60,8 @@ class DetailsFragment : Fragment() {
                  context?.let {
                      binding.imdDetails.downloadFromUrl(country.flag, placeHolderProgressBar(it))
                  }
+
+                  */
 
              }
          })

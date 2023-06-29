@@ -4,19 +4,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <data>
+        <variable name="country" type="com.semihozmen.lkelerkotlin.model.CountryModel" />
+        <variable name="listener" type="com.semihozmen.lkelerkotlin.adapter.CountryClickListener" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:onClick="@{listener::onCountryClick}">
+
+        <TextView
+            android:id="@+id/countryId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(country.id)}"/>
 
                 <ImageView
                     android:id="@+id/img_card"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
-                    android:padding="3dp"
-                    tools:srcCompat="@tools:sample/avatars" />
-        <androidx.appcompat.widget.LinearLayoutCompat
+                    android:downloadUrlFromDataBinding="@{country.flag}"
+                    android:padding="3dp" />
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -27,7 +40,7 @@
                 android:id="@+id/txt_card_countryname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="deneme"
+                android:text="@{country.name}"
                 android:padding="5dp"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -36,13 +49,13 @@
                 android:id="@+id/txt_card_countryinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="deneme"
+                android:text="@{country.region}"
                 android:padding="5dp"
                 android:textSize="16sp"/>
 
 
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </LinearLayout>
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 </layout>

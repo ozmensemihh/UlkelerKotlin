@@ -3,10 +3,13 @@ package com.semihozmen.lkelerkotlin.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import javax.inject.Inject
 
 @Entity
-data class CountryModel(
-
+data class CountryModel
+    @Inject // Injectable olduğunu bildiriyoruz.
+    constructor
+    (
     @ColumnInfo(name = "name")
     val name:String?,
 

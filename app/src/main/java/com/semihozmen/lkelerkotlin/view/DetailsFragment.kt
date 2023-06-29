@@ -14,7 +14,9 @@ import com.semihozmen.lkelerkotlin.databinding.FragmentDetailsBinding
 import com.semihozmen.lkelerkotlin.util.downloadFromUrl
 import com.semihozmen.lkelerkotlin.util.placeHolderProgressBar
 import com.semihozmen.lkelerkotlin.viewmodel.DetailsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 
 class DetailsFragment : Fragment() {
 

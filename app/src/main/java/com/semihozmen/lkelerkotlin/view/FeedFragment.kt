@@ -15,7 +15,9 @@ import com.semihozmen.lkelerkotlin.R
 import com.semihozmen.lkelerkotlin.adapter.CountryAdapter
 import com.semihozmen.lkelerkotlin.databinding.FragmentFeedBinding
 import com.semihozmen.lkelerkotlin.viewmodel.FeedViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FeedFragment : Fragment() {
 
     private lateinit var feedViewModel: FeedViewModel

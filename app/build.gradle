@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -41,6 +42,7 @@ android {
             jvmTarget = "1.8"
         }
     }
+
 }
 
 def lifeCycleExtensionVersion = '1.1.1'
@@ -86,6 +88,11 @@ dependencies {
 
     implementation "androidx.palette:palette:1.0.0"
 
-
     implementation "androidx.preference:preference:$preferencesVersion"
+
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+}
+kapt {
+    correctErrorTypes true
 }
